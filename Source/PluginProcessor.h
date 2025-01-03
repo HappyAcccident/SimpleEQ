@@ -22,7 +22,7 @@ struct ChainSettings
 {
     float peakFreq { 0 }, peakGainInDecibels{ 0 }, peakQuality {1.f};
     float lowCutFreq { 0 }, highCutFreq { 0 };
-    
+
     Slope lowCutSlope { Slope::Slope_12 }, highCutSlope { Slope::Slope_12 };
 };
 
@@ -89,6 +89,10 @@ private:
       Peak,
       HighCut
     };
+
+    void updatePeakFilter(const ChainSettings& chainSettings);
+    using Coefficients = Filter::CoefficientsPtr;
+    static void updateCoefficients(Coefficients& old, const Coefficients& replacements);
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SimpleEQAudioProcessor)
