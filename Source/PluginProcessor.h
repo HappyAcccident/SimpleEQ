@@ -107,7 +107,7 @@ private:
                          const CoefficientType& coefficients,
                          const Slope& slope)
     {
-
+      
       chain.template setBypassed<0>(true);
       chain.template setBypassed<1>(true);
       chain.template setBypassed<2>(true);
