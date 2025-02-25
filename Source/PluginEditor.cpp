@@ -150,6 +150,21 @@ void SimpleEQAudioProcessorEditor::resized()
 
 }
 
+void SimpleEQAudioProcessorEditor::parameterGestureChanged (int parameterIndex, bool gestureIsStarting)
+{
+  parametersChanged.set(true);
+}
+
+void SimpleEQAudioProcessorEditor::timerCallback()
+{
+  if (parametersChanged.compareAndSetBool(false, true))
+  {
+    //update the mono chain
+    //signal a repaint
+
+  }
+}
+
 std::vector<juce::Component*> SimpleEQAudioProcessorEditor::getComps()
 {
   return
